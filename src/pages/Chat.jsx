@@ -360,22 +360,25 @@ function Chat() {
                   </svg>
                 </div>
                 <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl px-6 py-4">
-                  <div className="flex space-x-2">
-                    <motion.div 
-                      className="w-2 h-2 bg-primary-300 rounded-full"
-                      animate={{ y: [0, -8, 0] }}
-                      transition={{ duration: 0.6, repeat: Infinity, delay: 0 }}
-                    />
-                    <motion.div 
-                      className="w-2 h-2 bg-accent-100 rounded-full"
-                      animate={{ y: [0, -8, 0] }}
-                      transition={{ duration: 0.6, repeat: Infinity, delay: 0.2 }}
-                    />
-                    <motion.div 
-                      className="w-2 h-2 bg-primary-300 rounded-full"
-                      animate={{ y: [0, -8, 0] }}
-                      transition={{ duration: 0.6, repeat: Infinity, delay: 0.4 }}
-                    />
+                  <div className="flex items-center gap-3">
+                    <div className="flex space-x-2">
+                      <motion.div 
+                        className="w-2 h-2 bg-primary-300 rounded-full"
+                        animate={{ y: [0, -8, 0] }}
+                        transition={{ duration: 0.6, repeat: Infinity, delay: 0 }}
+                      />
+                      <motion.div 
+                        className="w-2 h-2 bg-accent-100 rounded-full"
+                        animate={{ y: [0, -8, 0] }}
+                        transition={{ duration: 0.6, repeat: Infinity, delay: 0.2 }}
+                      />
+                      <motion.div 
+                        className="w-2 h-2 bg-primary-300 rounded-full"
+                        animate={{ y: [0, -8, 0] }}
+                        transition={{ duration: 0.6, repeat: Infinity, delay: 0.4 }}
+                      />
+                    </div>
+                    <span className="text-gray-400 text-sm">Legal Consultant is thinking...</span>
                   </div>
                 </div>
               </div>
