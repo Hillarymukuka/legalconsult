@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Boska', 'system-ui', 'sans-serif'],
+        sans: ['Author', 'system-ui', 'sans-serif'],
       },
       colors: {
         primary: {
