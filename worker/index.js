@@ -53,7 +53,12 @@ export default {
             'Authorization': `Bearer ${API_TOKEN}`,
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ messages }),
+          body: JSON.stringify({ 
+            messages,
+            max_tokens: 2048,
+            temperature: 0.7,
+            top_p: 0.9,
+          }),
         }
       );
 
