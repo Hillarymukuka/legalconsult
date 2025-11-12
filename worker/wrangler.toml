@@ -1,0 +1,7 @@
+name = "legalconsult-ai-proxy"
+main = "index.js"
+compatibility_date = "2024-11-12"
+
+# Workers AI binding
+[ai]
+binding = "AI"

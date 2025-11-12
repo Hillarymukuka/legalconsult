@@ -12,9 +12,7 @@ IMPORTANT: Keep your responses concise and focused. Summarize information to the
 
 You write clearly and concisely in a professional tone. Always provide practical, educational legal explanations with references to Zambian law where applicable. When discussing African legal contexts, highlight unique aspects of African legal systems including customary law where relevant. Clarify that this is not formal legal advice, and users should consult a licensed lawyer in Zambia or their respective African country for real cases.`;
 
-const CLOUDFLARE_ACCOUNT_ID = 'b5c09dd43a24e9b610b32fcfc548d442';
-const CLOUDFLARE_API_TOKEN = 'uvKUKIZ8vW7XZqP-0T4hgky8iyb0o_65tvnsOfSn';
-const MODEL = '@cf/meta/llama-4-scout-17b-16e-instruct';
+const WORKER_URL = 'https://legalconsult-ai-proxy.hillarymukuka.workers.dev';
 
 export const sendMessage = async (userMessage, conversationHistory = []) => {
   const messages = [
@@ -24,23 +22,19 @@ export const sendMessage = async (userMessage, conversationHistory = []) => {
   ];
 
   try {
-    const response = await fetch(
-      `https://api.cloudflare.com/client/v4/accounts/${CLOUDFLARE_ACCOUNT_ID}/ai/run/${MODEL}`,
-      {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${CLOUDFLARE_API_TOKEN}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          messages: messages
-        })
-      }
-    );
+    const response = await fetch(WORKER_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        messages: messages
+      })
+    });
 
     if (!response.ok) {
       const error = await response.json().catch(() => ({}));
-      throw new Error(error.errors?.[0]?.message || 'Unable to connect to the legal consultant service. Please check your internet connection and try again.');
+      throw new Error(error.error || 'Unable to connect to the legal consultant service. Please check your internet connection and try again.');
     }
 
     const data = await response.json();
